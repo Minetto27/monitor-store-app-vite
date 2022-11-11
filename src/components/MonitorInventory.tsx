@@ -7,11 +7,6 @@ type MonitorInventoryProps = {
 
 export const MonitorInventory: React.FC<MonitorInventoryProps> = ({ list }) => {
 
-  let listItem = list;
-
-  useEffect(() => {  
-    listItem = list;
-  }, [list])
 
 
   return (
@@ -29,7 +24,7 @@ export const MonitorInventory: React.FC<MonitorInventoryProps> = ({ list }) => {
           </tr>
         </thead>
         <tbody>
-          {listItem.map(item => 
+          {list.map(item => 
             <tr>
             <td>{item.productNumber}</td>
             <td>{item.brand}</td>

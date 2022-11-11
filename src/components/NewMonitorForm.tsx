@@ -2,12 +2,12 @@ import { useEffect, useState } from "react";
 import { BRAND_NAMES, IMonitorItem, SCREEN_SIZES } from "../interface/IMonitor";
 
 type NewMonitorFormProps = {
-  addItem: Function;
+  onAddItem: Function;
   productNumberArray: string[] | undefined;
 };
 
 export const NewMonitorForm: React.FC<NewMonitorFormProps> = ({
-  addItem,
+  onAddItem,
   productNumberArray,
 }) => {
   const [activeBtnAdd, setActiveBtnAdd] = useState(true);
@@ -20,7 +20,7 @@ export const NewMonitorForm: React.FC<NewMonitorFormProps> = ({
 
   const [errorMsg, setErrorMsg] = useState(false);
 
-  const createItem = () => {
+  const handleItem = () => {
     if (productNumberArray && !productNumberArray.includes(NewProductNumber)) {
       const createItem = {
         productNumber: NewProductNumber,
@@ -30,7 +30,7 @@ export const NewMonitorForm: React.FC<NewMonitorFormProps> = ({
         quantity: NewQuantity,
       };
 
-      addItem(createItem);
+      onAddItem(createItem);
       setNewProductNumber('');
       setNewBrand('');
       setNewSizeScreen('');
@@ -127,7 +127,7 @@ export const NewMonitorForm: React.FC<NewMonitorFormProps> = ({
       <input
         type="button"
         disabled={activeBtnAdd}
-        onClick={() => createItem()}
+        onClick={() => handleItem()}
         value="Add Monitor"
       />
     </fieldset>
