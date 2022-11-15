@@ -10,20 +10,15 @@ type MonitorStoreProps = {
 
 export const MonitorStore: React.FC<MonitorStoreProps> = ({ storeName }) => {
 
-  const [listMonitors, setListMonitors] = useState<IMonitorItem[]>([]);
+  const [Monitors, setMonitors] = useState<IMonitorItem[]>([]);
 
   const handleAddItem = (newItem:IMonitorItem) => {    
-    setListMonitors(previous => [...previous, newItem]);
+    setMonitors(previous => [...previous, newItem]);
   }
 
   const productNumbers = () : string[] => {
-      return listMonitors.map(item => item.productNumber);
+      return Monitors.map(item => item.productNumber);
   }
-
-  // useEffect(() => {
-  //   console.log(productNumberArray());
-  // },[listMonitors]);
-
 
   return (
     <>
@@ -31,7 +26,7 @@ export const MonitorStore: React.FC<MonitorStoreProps> = ({ storeName }) => {
 
       <NewMonitorForm onAddItem={handleAddItem} productNumberArray={productNumbers()}/>
       <MonitorFilters />
-      <MonitorInventory list={listMonitors}/>
+      <MonitorInventory monitors={Monitors}/>
     </>
   )
 }

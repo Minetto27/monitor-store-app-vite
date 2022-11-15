@@ -2,10 +2,10 @@ import { useEffect, useState } from "react"
 import { IMonitorItem } from "../interface/IMonitor"
 
 type MonitorInventoryProps = {
-  list: IMonitorItem[]
+  monitors: IMonitorItem[]
 }
 
-export const MonitorInventory: React.FC<MonitorInventoryProps> = ({ list }) => {
+export const MonitorInventory: React.FC<MonitorInventoryProps> = ({ monitors }) => {
 
 
 
@@ -24,7 +24,7 @@ export const MonitorInventory: React.FC<MonitorInventoryProps> = ({ list }) => {
           </tr>
         </thead>
         <tbody>
-          {list.map(item => 
+          {monitors.map(item => 
             <tr>
             <td>{item.productNumber}</td>
             <td>{item.brand}</td>
